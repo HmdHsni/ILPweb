@@ -4,7 +4,7 @@ import React from "react";
   return (
 <main className=" flex bg-slate-100 w-full h-screen ">
   
-
+Main
 </main>
   );
 }
