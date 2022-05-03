@@ -1,5 +1,7 @@
 
 import React from "react";
+import Button from "../FormComponents/Button";
+import Input from '../FormComponents/Input';
 function Login() {
 return (
 
@@ -9,21 +11,21 @@ return (
     <form>
       <div className="mb-4">
         <label className="block mb-1" htmlFor="email">ایمیل</label>
-        <input id="email" type="text" name="email" className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full" />
+        <Input id="email" type="text" name="email"  placeholder=" ایمیل..."/>
       </div>
       <div className="mb-4">
         <label className="block mb-1" htmlFor="password">پسورد</label>
-        <input id="password" type="password" name="password" className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full" />
+        <Input id="password" type="password" name="password" placeholder=" پسورد ..." />
       </div>
       <div className="mt-6 flex items-center justify-between">
         <div className="flex items-center">
-          <input id="remember_me" type="checkbox" className="border border-gray-300 text-red-600 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50" />
+          <Input id="remember_me" type="checkbox" className="text-red-600  focus:border-red-300"  />
           <label htmlFor="remember_me" className="ml-2 block text-sm leading-5 text-gray-900">به خاطر بسپار </label>
         </div>
         <a href="#" className="text-sm">رمز عبور را فراموش کرده ام</a>
       </div>
       <div className="mt-6">
-        <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-400 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-blue-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">ورود</button>
+        <Button >ورود</Button>
       </div>
       <div className="mt-6 text-center">
         <a href="#" >ایجاد حساب کاربری</a>
