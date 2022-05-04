@@ -2,6 +2,7 @@
 import React from "react";
 import Button from "../FormComponents/Button";
 import Input from '../FormComponents/Input';
+import axios from "axios";
 class Login extends React.Component {
   state={
     form:{
@@ -24,6 +25,35 @@ class Login extends React.Component {
 
     }
   }
+  inputChangeHandler(event,inputElement){
+      const updatedForm={
+        ...this.state.form,
+      }
+      //stat:form=> state:updatedform
+      const updatedElement={...updatedForm[inputElement]}
+  //inputElement=>email or password
+      updatedElement.value=event.target.value
+      updatedForm[inputElement]=updatedElement   
+      this.setState({form:updatedForm})
+  }
+  submitHandler=(event)=>{
+    event.preventDefault();
+    //get data from state 
+    const formData={};
+    for(let item in this.state.form){
+      formData[item]=this.state.form[item].value
+    }
+    // axios.post("https://books-58490-default-rtdb.firebaseio.com///userData.json",formData)
+     axios.post("https://pychamp.ir//userData.json",formData)
+    .then((response=>{
+      console.log(response);
+    }))
+    .catch(err=>{
+      console.log(err);
+    })
+ 
+
+  }
   render(){
     const elementsArray=[]
     for(let item in this.state.form){
@@ -38,15 +68,16 @@ return (
 <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
   <div className="w-full sm:max-w-md p-5 mx-auto">
     <h2 className="mb-12 text-center text-2xl font-extrabold">ورود به پنل کاربری</h2>
-    <form>
+    <form onSubmit={this.submitHandler}>
       {elementsArray.map((item)=>{
         return(
           <div className="mb-4">
             <label className="block mb-1" htmlFor="email">{item.config.elementConfige.placeholder}</label>
           <Input 
           key={item.id}
-          elementType={item.config.elementConfige}
-          value={item.config.value}/>
+          elementtype={item.config.elementConfige}
+          value={item.config.value}
+          change={(event)=>this.inputChangeHandler(event,item.id)}/>
           </div>
         )
       })}
