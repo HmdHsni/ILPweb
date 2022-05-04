@@ -6,11 +6,11 @@ import axios from "axios";
 class Login extends React.Component {
   state={
     form:{
-        email:{
+        username:{
           elementtype:"input",
           elementConfige:{
             type:"text",
-            placeholder:"ایمیل",
+            placeholder:"یوزرنیم",
                    },
           value:"",
         },
@@ -46,7 +46,7 @@ class Login extends React.Component {
     //it works with this url in firebase 
     // axios.post("https://books-58490-default-rtdb.firebaseio.com///userData.json",formData)
     // but it has error with this url
-     axios.post("https://pychamp.ir//userData.json",formData)
+     axios.post("http://194.147.142.172:9500/api/v1/token/",formData)
     .then((response=>{
       console.log(response);
     }))
