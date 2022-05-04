@@ -43,7 +43,9 @@ class Login extends React.Component {
     for(let item in this.state.form){
       formData[item]=this.state.form[item].value
     }
+    //it works with this url in firebase 
     // axios.post("https://books-58490-default-rtdb.firebaseio.com///userData.json",formData)
+    // but it has error with this url
      axios.post("https://pychamp.ir//userData.json",formData)
     .then((response=>{
       console.log(response);
