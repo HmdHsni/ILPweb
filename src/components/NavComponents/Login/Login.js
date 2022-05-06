@@ -10,11 +10,19 @@ import { Routes, Route, Link,Navigate } from "react-router-dom";
 class Login extends React.Component{
    state={
     form:{
+<<<<<<< HEAD:src/components/NavComponents/Login/Login.js
       username:{
           elementtype:"input",
           elementConfige:{
             type:"text",
             placeholder:"نام کاربری",
+=======
+        username:{
+          elementtype:"input",
+          elementConfige:{
+            type:"text",
+            placeholder:"یوزرنیم",
+>>>>>>> d60c767e4623ca1ff0296b1eed508766d7b358c7:src/components/NavComponents/Login.js
                    },
           value:"",
         },
@@ -45,6 +53,12 @@ class Login extends React.Component{
     for(let item in this.state.form){
       formData[item]=this.state.form[item].value
     }
+<<<<<<< HEAD:src/components/NavComponents/Login/Login.js
+=======
+    //it works with this url in firebase 
+    // axios.post("https://books-58490-default-rtdb.firebaseio.com///userData.json",formData)
+    // but it has error with this url
+>>>>>>> d60c767e4623ca1ff0296b1eed508766d7b358c7:src/components/NavComponents/Login.js
      axios.post("http://194.147.142.172:9500/api/v1/token/",formData)
     .then((response=>{
       console.log(response.data);
