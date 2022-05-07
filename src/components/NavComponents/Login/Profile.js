@@ -1,14 +1,10 @@
-
 import React from "react";
+  function Profilet() {
+  return (
 
-function Profile() {
-  
-return (
-<div className=" flex bg-red-300 w-full h-screen ">
-you are loged in!
+<h1> about us</h1>
 
-</div>
-);
+  );
 }
 
-export default Profile;
+export default Profilet;

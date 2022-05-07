@@ -5,7 +5,8 @@ import Button from "../../FormComponents/Button";
 import Input from '../../FormComponents/Input';
 import axios from "axios"
 import Profile from "./Profile";
-import Home from '../Home';
+// import Home from '../Home';
+import AboutUs from '../AboutUs'
 import { Routes, Route, Link,useNavigate } from "react-router-dom";
 function Login (){
    const formState=useState({
@@ -26,9 +27,6 @@ function Login (){
       }
      }
    }
-    
-
-    
    )
    let navigate=useNavigate()
    function submitHandler(event){
@@ -38,12 +36,10 @@ function Login (){
     for(let item in formState[0].form){
       formData[item]=formState[0].form[item].value
     }
-    navigate("/")
+    navigate("/about")
      axios.post("http://194.147.142.172:9500/api/v1/token/",formData)
     .then((response=>{
       console.log(response);
-         
-      
     }))
     .catch(err=>{
       console.log(err);
@@ -76,8 +72,6 @@ function Login (){
     console.log(elementsArray);
     
 return (
-
-
  <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
   <div className="w-full sm:max-w-md p-5 mx-auto">
     <h2 className="mb-12 text-center text-2xl font-extrabold">ورود به پنل کاربری</h2>
@@ -113,6 +107,10 @@ return (
       </div>
     </form>
   </div>
+  <Routes>
+     
+      <Route path="/about"  element={<AboutUs />}/>
+      </Routes>
 </div> 
 
 );}
