@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router ,Routes, Route,Link} from "react-router-dom";
 import AboutUs from "../NavComponents/AboutUs";
 import Broker from "../NavComponents/Broker";
 import Home from "../NavComponents/Home";
@@ -21,6 +21,7 @@ import Contact from "../NavComponents/Contact";
 // }
 //     }
   return (
+    
 <div>
 <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -50,14 +51,19 @@ import Contact from "../NavComponents/Contact";
     </div>
   </div>
 </nav>
+
+
 <Routes>
       <Route path="/" exact element={<Home/>}/>
       <Route path="/about"  element={<AboutUs />}/>
       <Route path="/broker"  element={<Broker />}/>
-      <Route path="/userlog/*"  element={<Login />}/>
+      <Route path="/userlog"  element={<Login />}/>
       <Route path="/contactPage"  element={<Contact />}/>
       </Routes>
+{/* </Router> */}
+     
 </div>
+
 
 
   );
