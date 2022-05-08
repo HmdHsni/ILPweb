@@ -1,27 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router ,Routes, Route,Link} from "react-router-dom";
+import { BrowserRouter as Router ,Routes, Route,useNavigate,Link} from "react-router-dom";
 import AboutUs from "../NavComponents/AboutUs";
 import Broker from "../NavComponents/Broker";
 import Home from "../NavComponents/Home";
 import Login from "../NavComponents/Login/Login";
 import Contact from "../NavComponents/Contact";
   function Navbar() {
-//    function userAuthenticate(){
-// if(localStorage.getItem('accessToken')&&
-// localStorage.getItem("refToken")){ 
-//       console.log("accessToken");
-//       console.log(localStorage.getItem('accessToken'));
-//       console.log("refToken");
-//       console.log(localStorage.getItem("refToken"));
-
-// }
-// else{
-// <link to="userlog"></link>
-
-// }
-//     }
+let navigate=useNavigate();
+function loginHandler(){
+  let access = localStorage.getItem("accessToken");
+  let refresh=localStorage.getItem("refreshToken");
+  if(access && refresh){
+    navigate("/")
+  }
+  else{
+    navigate("/userlog")
+  }
+}
   return (
-    
 <div>
 <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -46,13 +42,11 @@ import Contact from "../NavComponents/Contact";
       </Link>
     </div>
     <div>
-      {/* <link to="userlog"></link> */}
-      <Link to="/userlog"  className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">ورود</Link>
+      {/* <link to="/userlog"></link> */}
+      <button onClick={loginHandler} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">ورود</button>
     </div>
   </div>
 </nav>
-
-
 <Routes>
       <Route path="/" exact element={<Home/>}/>
       <Route path="/about"  element={<AboutUs />}/>
