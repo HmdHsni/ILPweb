@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import Button from "../../FormComponents/Button";
 import Input from '../../FormComponents/Input';
 import axios from "axios"
-import Profile from "./Profile";
-// import Home from '../Home';
+ import UserProfile from "../UserProfile";
+import Home from '../Home';
 import AboutUs from '../AboutUs'
 import { Routes, Route, Link,useNavigate } from "react-router-dom";
 function Login (){
@@ -36,8 +36,8 @@ function Login (){
     for(let item in formState[0].form){
       formData[item]=formState[0].form[item].value
     }
-    navigate("/about")
-     axios.post("http://194.147.142.172:9500/api/v1/token/",formData)
+    navigate("/")
+     axios.post("/api/v1/token/",formData)
     .then((response=>{
       console.log(response);
     }))
@@ -98,9 +98,7 @@ return (
       <div className="mt-6">
            <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-400 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-blue-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">ورود</button>
      
-        <Routes>
-         <Route path="/profile" exact element={<Profile />}/>
-         </Routes> 
+       
       </div>
       <div className="mt-6 text-center">
         <a href="#" >ایجاد حساب کاربری</a>
@@ -108,7 +106,7 @@ return (
     </form>
   </div>
   <Routes>
-     
+       {/* <Route path="/" exact element={<Home />}/> */}
       <Route path="/about"  element={<AboutUs />}/>
       </Routes>
 </div> 
