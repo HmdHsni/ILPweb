@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import Button from "../../FormComponents/Button";
 import Input from '../../FormComponents/Input';
 import axios from "axios"
- import UserProfile from "../UserProfile";
 import Home from '../Home';
-import AboutUs from '../AboutUs'
+import AboutUs from '../AboutUs';
+import Myprofile from './Myprofile';
 import { Routes, Route, Link,useNavigate } from "react-router-dom";
 function Login (){
    const formState=useState({
@@ -37,15 +37,21 @@ function Login (){
     for(let item in formState[0].form){
       formData[item]=formState[0].form[item].value
     }
-   
+    navigate("/myprofile")
      axios.post("/api/v1/token/",formData)
     .then((response=>{
       const accessToken=response.data.access
       const refreshToken=response.data.refresh
     localStorage.setItem("accessToken",accessToken)
     localStorage.setItem("refreshToken",refreshToken)
-    console.log(response);
-    navigate("/")
+      axios.get("/api/v1/broker/userbrokers/",accessToken).then(response=>{
+        console.log(response);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    // console.log(response);
+    
     }))
     .catch(err=>{
       console.log(err);
@@ -114,10 +120,7 @@ return (
       </div>
     </form>
   </div>
-  <Routes>
-       {/* <Route path="/" exact element={<Home />}/> */}
-      <Route path="/about"  element={<AboutUs />}/>
-      </Routes>
+ 
 </div> 
 
 );}

@@ -1,6 +1,7 @@
 
 import React from "react";
 import Navbar from'./components/Navbar/Navbar';
+import Footer from "./components/Footer";
 
 
 
@@ -9,6 +10,7 @@ import Navbar from'./components/Navbar/Navbar';
 
 <div >
 <Navbar/>
+<Footer></Footer>
 
 </div>
 

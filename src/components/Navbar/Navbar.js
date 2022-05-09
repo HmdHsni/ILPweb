@@ -11,7 +11,7 @@ function loginHandler(){
   let access = localStorage.getItem("accessToken");
   let refresh=localStorage.getItem("refreshToken");
   if(access && refresh){
-    navigate("/")
+    navigate("/myprofile")
   }
   else{
     navigate("/userlog")
