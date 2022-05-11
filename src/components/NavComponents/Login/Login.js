@@ -33,6 +33,8 @@ function Login (){
    function submitHandler(event){
     event.preventDefault();
     //get data from state 
+    console.log("formState[0].form");
+    console.log(formState[0].form);
     const formData={};
     for(let item in formState[0].form){
       formData[item]=formState[0].form[item].value
@@ -44,14 +46,6 @@ function Login (){
       const refreshToken=response.data.refresh
     localStorage.setItem("accessToken",accessToken)
     localStorage.setItem("refreshToken",refreshToken)
-      axios.get("/api/v1/broker/userbrokers/",accessToken).then(response=>{
-        console.log(response);
-      })
-      .catch(err=>{
-        console.log(err);
-      })
-    // console.log(response);
-    
     }))
     .catch(err=>{
       console.log(err);
@@ -70,8 +64,6 @@ function Login (){
  }
   function inputChangeHandler(event,inputElement){
     //inputElement==user or password
-    console.log("enev valu");
-    console.log(event.target.value);
       const updatedForm=formState[0].form
       //stat:form=> state:updatedform
       const updatedElement={...updatedForm[inputElement]}
@@ -81,8 +73,6 @@ function Login (){
      
      // this.setState({form:updatedForm})
          formState[1]=updatedForm
-         console.log(formState[1]);
-
   }  
 return (
  <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
